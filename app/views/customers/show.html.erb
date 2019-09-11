@@ -1,41 +1,37 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <div class="alert alert-primary mt-3" role="alert">
+          <%= notice %>
+          Nombre: <strong><%= @customer.name %></strong>
+          Compañía: <strong><%= @customer.company %></strong>
+          Sector: <strong><%= @customer.sector.name %></strong>
+          Phone: <strong><%= @customer.phone %></strong>, Email: <strong><%= @customer.email %></strong>
+          <%= link_to 'Volver a clientes', customers_path, class: "btn btn-primary"  %>
+      </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @customer.name %>
-</p>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Company:</strong>
-  <%= @customer.company %>
-</p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @customer.phone %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @customer.email %>
-</p>
-
-<p>
-  <strong>Sector:</strong>
-  <%= @customer.sector.name %>
-</p>
 
 <% @sales.each do |sale| %>
-  <p><%= sale.created_at %></p>
-  <% sale.products.each do |s| %>
-    <p><%= s.name %> - <%= s.price %></p>
-  <% end %>
-  <p>Total: <%= sale.products.sum(:price) %></p>
-  <p>Promedio: <%= sale.products.average(:price) %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 mx-auto">
+      <div class="alert alert-secondary" role="alert">
+        <h3>Fecha de compra: <strong><%= sale.created_at.strftime("%m/%d/%Y") %></strong></h3>
+        <h5>Valor total compra: <strong><%= number_to_currency(sale.products.sum(:price), precision: 0, delimiter: '.') %></strong>  Valor promedio por ítem: <strong><%= number_to_currency(sale.products.average(:price), precision: 0, delimiter: '.') %></strong></h5>
+        <h2>Compras:</h2>
+          <% sale.products.each do |s| %>
+            <p>Producto: <strong><%= s.name %></strong> - Precio: <strong><%= number_to_currency(s.price, precision: 0, delimiter: '.') %></strong></p>
+          <% end %>  
+          <p> - </p>
+      </div>
+    </div>
+  </div>
+</div>
 <% end %>
 
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
 
-
-<!-- @expenses.sum(:amount) -->

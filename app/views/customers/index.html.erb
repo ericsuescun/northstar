@@ -1,35 +1,41 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <h1>Clientes</h1>
 
-<h1>Customers</h1>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Compañía</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Email</th>
+            <th scope="col">Sector</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Company</th>
-      <th>Phone</th>
-      <th>Email</th>
-      <th>Sector</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <tbody>
+          <% @customers.each do |customer| %>
+            <tr>
+              <td><%= customer.name %></td>
+              <td><%= customer.company %></td>
+              <td><%= customer.phone %></td>
+              <td><%= customer.email %></td>
+              <td><%= customer.sector.name %></td>
+              <td><%= link_to 'Reporte compras', customer %></td>
+              <td><%= link_to 'Editar cliente', edit_customer_path(customer) %></td>
+              <td><%= link_to 'Borrar', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-  <tbody>
-    <% @customers.each do |customer| %>
-      <tr>
-        <td><%= customer.name %></td>
-        <td><%= customer.company %></td>
-        <td><%= customer.phone %></td>
-        <td><%= customer.email %></td>
-        <td><%= customer.sector.name %></td>
-        <td><%= link_to 'Show', customer %></td>
-        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <br>
 
-<br>
+      <%= link_to 'Nuevo Cliente', new_customer_path, class: "btn btn-primary"  %>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'New Customer', new_customer_path %>

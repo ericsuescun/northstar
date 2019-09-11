@@ -11,11 +11,11 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.select :customer_id, Customer.pluck(:name, :id), {prompt:"Choose Customer"}%>
+  <div class="form-group">
+    <%= form.select :customer_id, Customer.pluck(:name, :id), {prompt:"Seleccione el cliente"}, class: "form-control" %>
   </div>
 
-  <div class="actions">
+  <div class="form-group">
     <%= form.submit %>
   </div>
 <% end %>
