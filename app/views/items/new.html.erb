@@ -1,5 +1,13 @@
-<h1>New Item</h1>
 
-<%= render 'form', item: @item %>
 
-<%= link_to 'Back', items_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+		<h1>Nuevo Producto</h1>
+
+		<%= render 'form', item: @item %>
+
+		<%= link_to 'Volver al listado de productos', items_path, class: "btn btn-primary btn-lg btn-block mt-3" %>    	
+    </div>
+  </div>
+</div>

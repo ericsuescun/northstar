@@ -1,14 +1,10 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @item.name %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @item.price %>
-</p>
-
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"><strong>Nombre:</strong><%= @item.name %></h5>
+    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+    <p class="card-text"><strong>Precio:</strong> <%= @item.price %></p>
+    <%= link_to 'Editar', edit_item_path(@item), class: "card-link" %>
+    <%= link_to 'Volver', items_path, class: "card-link" %>
+  </div>
+</div>

@@ -2,8 +2,8 @@
 <div class="container">
   <div class="row">
     <div class="col-10 mx-auto">
-      <h1>Ventas</h1>
-
+      <h1>Listado de Ventas</h1>
+      <%= link_to 'Nueva Venta', new_sale_path, class: "btn btn-primary mb-3"  %>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -16,19 +16,15 @@
         <tbody>
           <% @sales.each do |sale| %>
             <tr>
-              <td><%= sale.customer.created_at %></td>
+              <td><%= sale.customer.created_at.strftime("%m/%d/%Y") %></td>
               <td><%= sale.customer.name %></td>
-              <td><%= link_to 'Show', sale %></td>
-              <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
-              <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to 'Agregar producto', sale %></td>
+              <td><%= link_to 'Cambiar cliente', edit_sale_path(sale) %></td>
+              <td><%= link_to 'Borrar', sale, method: :delete, data: { confirm: 'Confirmas el borrado?' } %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
-
-      <br>
-
-      <%= link_to 'Crear Venta', new_sale_path, class: "btn btn-primary"  %>
     </div>
   </div>
 </div>

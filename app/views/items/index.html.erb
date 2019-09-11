@@ -1,29 +1,35 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <h1>Listado de Productos</h1>
+      <%= link_to 'Nuevo Producto', new_item_path, class: "btn btn-primary mb-3" %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nombre del producto</th>
+            <th>Precio</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-<h1>Items</h1>
+        <tbody>
+          <% @items.each do |item| %>
+            <tr>
+              <td><%= item.name %></td>
+              <td><%= item.price %></td>
+              <td><%= link_to 'Detalles', item %></td>
+              <td><%= link_to 'Editar', edit_item_path(item) %></td>
+              <td><%= link_to 'Borrar', item, method: :delete, data: { confirm: 'Confirmas el borrado?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <br>
 
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.name %></td>
-        <td><%= item.price %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    </div>
+  </div>
+</div>
 
-<br>
 
-<%= link_to 'New Item', new_item_path %>

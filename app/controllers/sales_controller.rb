@@ -12,6 +12,7 @@ class SalesController < ApplicationController
   def show
     @products = Product.all
     @sale = Sale.find(params[:id])
+    @items = Item.all
   end
 
   # GET /sales/new

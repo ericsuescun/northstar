@@ -18,11 +18,17 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="/customers">Clientes <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/sales">Ventas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/items">Productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/sectors">Sectores</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -32,11 +38,11 @@
               <%= link_to 'Nuevo Cliente', new_customer_path, class: "dropdown-item" %>
               <%= link_to 'Crear Venta', new_sale_path, class: "dropdown-item" %>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/customers/new">Something else here</a>
+              <!-- <a class="dropdown-item" href="/customers/new">Something else here</a> -->
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">

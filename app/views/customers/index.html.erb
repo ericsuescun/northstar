@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-10 mx-auto">
       <h1>Clientes</h1>
-
+      <%= link_to 'Nuevo Cliente', new_customer_path, class: "btn btn-primary mb-3"  %>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -26,15 +26,13 @@
               <td><%= customer.sector.name %></td>
               <td><%= link_to 'Reporte compras', customer %></td>
               <td><%= link_to 'Editar cliente', edit_customer_path(customer) %></td>
-              <td><%= link_to 'Borrar', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to 'Borrar', customer, method: :delete, data: { confirm: 'Confirmas el borrado?' } %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
 
       <br>
-
-      <%= link_to 'Nuevo Cliente', new_customer_path, class: "btn btn-primary"  %>
     </div>
   </div>
 </div>

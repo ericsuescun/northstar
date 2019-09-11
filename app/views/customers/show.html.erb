@@ -7,7 +7,8 @@
           Compañía: <strong><%= @customer.company %></strong>
           Sector: <strong><%= @customer.sector.name %></strong>
           Phone: <strong><%= @customer.phone %></strong>, Email: <strong><%= @customer.email %></strong>
-          <%= link_to 'Volver a clientes', customers_path, class: "btn btn-primary"  %>
+          <br>
+          <%= link_to 'Volver a clientes', customers_path, class: "btn btn-primary mt-3"  %>
       </div>
 
     </div>
@@ -22,7 +23,7 @@
     <div class="col-sm-10 mx-auto">
       <div class="alert alert-secondary" role="alert">
         <h3>Fecha de compra: <strong><%= sale.created_at.strftime("%m/%d/%Y") %></strong></h3>
-        <h5>Valor total compra: <strong><%= number_to_currency(sale.products.sum(:price), precision: 0, delimiter: '.') %></strong>  Valor promedio por ítem: <strong><%= number_to_currency(sale.products.average(:price), precision: 0, delimiter: '.') %></strong></h5>
+        <h5>Valor total compra: <strong><%= number_to_currency(sale.products.sum(:price), precision: 0, delimiter: '.') %></strong>  Valor promedio por ítem: <strong><%= number_to_currency(sale.products.average(:price) || 0, precision: 0, delimiter: '.') %></strong></h5>
         <h2>Compras:</h2>
           <% sale.products.each do |s| %>
             <p>Producto: <strong><%= s.name %></strong> - Precio: <strong><%= number_to_currency(s.price, precision: 0, delimiter: '.') %></strong></p>
