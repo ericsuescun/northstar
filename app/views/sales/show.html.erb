@@ -2,8 +2,30 @@
 
 <p>
   <strong>Customer:</strong>
-  <%= @sale.customer %>
+  <%= @sale.customer.name %>
 </p>
+<% @sale.products.each do |product| %>
+	<p><%= product.created_at %> - <%= product.name %> - <%= product.price %></p>
+<% end %>
+
+<%= form_for [@sale, @sale.products.build] do |f| %>
+
+	<div class="field">
+	  <%= f.label :name %>
+	  <%= f.text_field :name %>
+	</div>
+
+	<div class="field">
+	  <%= f.label :price %>
+	  <%= f.text_field :price %>
+	</div>
+
+  <div class="actions text-right">
+    <%= f.submit "Agregar Producto", class: "btn btn-warning" %>
+  </div>
+  <br>
+<% end %>
+
 
 <%= link_to 'Edit', edit_sale_path(@sale) %> |
 <%= link_to 'Back', sales_path %>

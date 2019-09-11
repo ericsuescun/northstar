@@ -32,8 +32,7 @@
   </div>
 
   <div class="field">
-    <%= form.label :sector_id %>
-    <%= form.text_field :sector_id %>
+    <%= form.select :sector_id, Sector.pluck(:name, :id), {prompt:"Choose Sector"}%>
   </div>
 
   <div class="actions">

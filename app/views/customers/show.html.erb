@@ -22,8 +22,20 @@
 
 <p>
   <strong>Sector:</strong>
-  <%= @customer.sector %>
+  <%= @customer.sector.name %>
 </p>
+
+<% @sales.each do |sale| %>
+  <p><%= sale.created_at %></p>
+  <% sale.products.each do |s| %>
+    <p><%= s.name %> - <%= s.price %></p>
+  <% end %>
+  <p>Total: <%= sale.products.sum(:price) %></p>
+  <p>Promedio: <%= sale.products.average(:price) %></p>
+<% end %>
 
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
 <%= link_to 'Back', customers_path %>
+
+
+<!-- @expenses.sum(:amount) -->

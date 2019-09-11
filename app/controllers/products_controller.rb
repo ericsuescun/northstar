@@ -24,17 +24,27 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
+    sale = Sale.find(params[:sale_id])
 
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
-      else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+    unless product_params[:name] == ""
+      sale.products.create(product_params)
+      redirect_to sale, notice: 'Product was successfully created.'
+    else
+      redirect_to sale, notice: "Respuesta vacía! Escribe algo por favor."
+
     end
+
+    # @product = Product.new(product_params)
+
+    # respond_to do |format|
+    #   if @product.save
+    #     format.html { redirect_to @product, notice: 'Product was successfully created.' }
+    #     format.json { render :show, status: :created, location: @product }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @product.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /products/1
