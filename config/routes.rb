@@ -1,3 +1,7 @@
 Rails.application.routes.draw do
+  resources :sectors
+  resources :products
+  resources :sales
+  resources :customers
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
