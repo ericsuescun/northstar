@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+    	<p>
+    	  <strong>Cliente:</strong>
+    	  <%= @sale.customer.name %>
+    	</p>
+    	<% @sale.products.each do |product| %>
+    		<p><%= product.created_at.strftime("%m/%d/%Y") %> - <%= product.name %> - <%= product.price %></p>
+    	<% end %>
+
+      <%= form_with model: @sale do |sales_form| %>
+        <%= sales_form.collection_select(:product_ids, Product.all, :id, :name,  { include_blank: true }, class: "form-control form-control-lg input") %>
+
+        <div class="form-group">
+          <%= sales_form.submit "Agregar Producto", class: "btn btn-primary btn-lg btn-block mt-3" %>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+      <%= link_to 'Volver', sales_path, class: "btn btn-primary btn-lg btn-block mt-3" %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+

@@ -43,15 +43,20 @@ class SalesController < ApplicationController
   # PATCH/PUT /sales/1
   # PATCH/PUT /sales/1.json
   def update
-    respond_to do |format|
-      if @sale.update(sale_params)
-        format.html { redirect_to @sale, notice: 'Sale was successfully updated.' }
-        format.json { render :show, status: :ok, location: @sale }
-      else
-        format.html { render :edit }
-        format.json { render json: @sale.errors, status: :unprocessable_entity }
-      end
-    end
+    products = @sale.product_ids
+    products << Product.find(sale_params[:product_ids]).id
+    @sale.product_ids = products
+    @sale.save
+
+    # respond_to do |format|
+    #   if @sale.update(sale_params)
+    #     format.html { redirect_to @sale, notice: 'Sale was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @sale }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @sale.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /sales/1
@@ -72,6 +77,6 @@ class SalesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sale_params
-      params.require(:sale).permit(:customer_id)
+      params.require(:sale).permit(:customer_id, :product_ids)
     end
 end

@@ -1,0 +1,8 @@
+
+
+function refresh() {
+	$('<%= j render "show" %>');
+}
+
+
+$(document).on('page:load', refresh());
