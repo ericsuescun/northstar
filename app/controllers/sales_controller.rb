@@ -48,6 +48,11 @@ class SalesController < ApplicationController
     @sale.product_ids = products
     @sale.save
 
+    respond_to do |format|
+         format.html { redirect_to @sale, notice: 'Sale was successfully updated.' }
+         format.json { render :show, status: :ok, location: @sale }  
+    end
+
     # respond_to do |format|
     #   if @sale.update(sale_params)
     #     format.html { redirect_to @sale, notice: 'Sale was successfully updated.' }
